@@ -1,17 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/presentation/pages/movie_detail_page.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/presentation/pages/popular_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_page.dart';
-import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
 import 'package:ditonton/common/state_enum.dart';
+import 'package:ditonton/presentation/pages/tv_detail_page.dart';
+import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
 import 'package:ditonton/presentation/widgets/space_x.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class MovieSection extends StatelessWidget {
-  const MovieSection({super.key});
+class TvSection extends StatelessWidget {
+  const TvSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class MovieSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Movie Area',
+              'Tv Area',
               style: kHeading5,
             ),
             15.verticalSpace,
@@ -30,14 +30,14 @@ class MovieSection extends StatelessWidget {
               'Now Playing',
               style: kHeading6,
             ),
-            Consumer<MovieListNotifier>(builder: (context, data, child) {
+            Consumer<TvListNotifier>(builder: (context, data, child) {
               final state = data.nowPlayingState;
               if (state == RequestState.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state == RequestState.loaded) {
-                return MovieList(movies: data.nowPlayingMovies);
+                return TvList(tvs: data.nowPlayingTvs);
               } else {
                 return const Text('Failed');
               }
@@ -47,17 +47,17 @@ class MovieSection extends StatelessWidget {
               onTap: () => Navigator.pushNamed(
                 context,
                 PopularPage.routeName,
-                arguments: 0,
+                arguments: 1,
               ),
             ),
-            Consumer<MovieListNotifier>(builder: (context, data, child) {
-              final state = data.popularMoviesState;
+            Consumer<TvListNotifier>(builder: (context, data, child) {
+              final state = data.popularTvsState;
               if (state == RequestState.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state == RequestState.loaded) {
-                return MovieList(movies: data.popularMovies);
+                return TvList(tvs: data.popularTvs);
               } else {
                 return const Text('Failed');
               }
@@ -67,17 +67,17 @@ class MovieSection extends StatelessWidget {
               onTap: () => Navigator.pushNamed(
                 context,
                 TopRatedPage.routeName,
-                arguments: 0,
+                arguments: 1,
               ),
             ),
-            Consumer<MovieListNotifier>(builder: (context, data, child) {
-              final state = data.topRatedMoviesState;
+            Consumer<TvListNotifier>(builder: (context, data, child) {
+              final state = data.topRatedTvsState;
               if (state == RequestState.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state == RequestState.loaded) {
-                return MovieList(movies: data.topRatedMovies);
+                return TvList(tvs: data.topRatedTvs);
               } else {
                 return const Text('Failed');
               }
@@ -110,12 +110,12 @@ class MovieSection extends StatelessWidget {
   }
 }
 
-class MovieList extends StatelessWidget {
-  final List<Movie> movies;
+class TvList extends StatelessWidget {
+  final List<Tv> tvs;
 
-  const MovieList({
+  const TvList({
     super.key,
-    required this.movies,
+    required this.tvs,
   });
 
   @override
@@ -125,31 +125,32 @@ class MovieList extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          final movie = movies[index];
+          final tv = tvs[index];
+
           return Container(
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  MovieDetailPage.routeName,
-                  arguments: movie.id,
+                  TvDetailPage.routeName,
+                  arguments: tv.id,
                 );
               },
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$baseImageUrl${movie.posterPath}',
+                  imageUrl: '$baseImageUrl${tv.posterPath}',
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  errorWidget: (_, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),
           );
         },
-        itemCount: movies.length,
+        itemCount: tvs.length,
       ),
     );
   }

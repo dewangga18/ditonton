@@ -1,6 +1,8 @@
 import 'package:ditonton/data/models/genre_model.dart';
+import 'package:ditonton/domain/entities/tv_detail.dart';
+import 'package:equatable/equatable.dart';
 
-class TvDetailResponse {
+class TvDetailResponse extends Equatable {
   final bool? adult;
   final String? backdropPath;
   final DateTime? firstAirDate;
@@ -51,7 +53,8 @@ class TvDetailResponse {
     this.voteCount,
   });
 
-  factory TvDetailResponse.fromJson(Map<String, dynamic> json) => TvDetailResponse(
+  factory TvDetailResponse.fromJson(Map<String, dynamic> json) =>
+      TvDetailResponse(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         firstAirDate: json["first_air_date"] == null
@@ -122,4 +125,59 @@ class TvDetailResponse {
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
+
+  TvDetail toEntity() {
+    return TvDetail(
+      adult: adult,
+      backdropPath: backdropPath,
+      firstAirDate: firstAirDate,
+      id: id,
+      homepage: homepage,
+      inProduction: inProduction,
+      languages: languages,
+      genres: genres?.map((genre) => genre.toEntity()).toList(),
+      lastAirDate: lastAirDate,
+      name: name,
+      numberOfEpisodes: numberOfEpisodes,
+      numberOfSeasons: numberOfSeasons,
+      originCountry: originCountry,
+      originalLanguage: originalLanguage,
+      originalName: originalName,
+      overview: overview,
+      popularity: popularity,
+      posterPath: posterPath,
+      status: status,
+      tagline: tagline,
+      type: type,
+      voteAverage: voteAverage,
+      voteCount: voteCount,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        adult,
+        backdropPath,
+        firstAirDate,
+        genres,
+        homepage,
+        id,
+        inProduction,
+        languages,
+        lastAirDate,
+        name,
+        numberOfEpisodes,
+        numberOfSeasons,
+        originCountry,
+        originalLanguage,
+        originalName,
+        overview,
+        popularity,
+        posterPath,
+        status,
+        tagline,
+        type,
+        voteAverage,
+        voteCount,
+      ];
 }

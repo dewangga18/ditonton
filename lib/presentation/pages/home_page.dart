@@ -1,8 +1,10 @@
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie_section.dart';
 import 'package:ditonton/presentation/pages/search_page.dart';
+import 'package:ditonton/presentation/pages/tv_section.dart';
 import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
-import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
+import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
+import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,11 +21,16 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () => Provider.of<MovieListNotifier>(context, listen: false)
-          ..fetchNowPlayingMovies()
-          ..fetchPopularMovies()
-          ..fetchTopRatedMovies());
+    Future.microtask(() {
+      Provider.of<MovieListNotifier>(context, listen: false)
+        ..fetchNowPlayingMovies()
+        ..fetchPopularMovies()
+        ..fetchTopRatedMovies();
+      Provider.of<TvListNotifier>(context, listen: false)
+        ..fetchNowPlayingTvs()
+        ..fetchPopularTvs()
+        ..fetchTopRatedTvs();
+    });
   }
 
   @override
@@ -85,9 +92,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: IndexedStack(
         index: index,
-        children: [
-          const MovieSection(),
-          Container(),
+        children: const [
+          MovieSection(),
+          TvSection(),
         ],
       ),
     );

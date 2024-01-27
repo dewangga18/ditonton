@@ -1,7 +1,7 @@
 import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/presentation/pages/popular_movies_page.dart';
-import 'package:ditonton/presentation/provider/popular_movies_notifier.dart';
+import 'package:ditonton/presentation/pages/popular_page.dart';
+import 'package:ditonton/presentation/provider/movies/popular_movies_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -34,7 +34,7 @@ void main() {
     final progressBarFinder = find.byType(CircularProgressIndicator);
     final centerFinder = find.byType(Center);
 
-    await tester.pumpWidget(makeTestableWidget(const PopularMoviesPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularPage(index: 0)));
 
     expect(centerFinder, findsOneWidget);
     expect(progressBarFinder, findsOneWidget);
@@ -47,7 +47,7 @@ void main() {
 
     final listViewFinder = find.byType(ListView);
 
-    await tester.pumpWidget(makeTestableWidget(const PopularMoviesPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularPage(index: 0)));
 
     expect(listViewFinder, findsOneWidget);
   });
@@ -59,7 +59,7 @@ void main() {
 
     final textFinder = find.byKey(const Key('error_message'));
 
-    await tester.pumpWidget(makeTestableWidget(const PopularMoviesPage()));
+    await tester.pumpWidget(makeTestableWidget(const PopularPage(index: 0)));
 
     expect(textFinder, findsOneWidget);
   });
