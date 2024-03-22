@@ -30,10 +30,14 @@ class _TvDetailPageState extends State<TvDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<TvDetailNotifier>(context, listen: false)
-          .fetchTvDetail(widget.id);
-      Provider.of<TvDetailNotifier>(context, listen: false)
-          .loadWatchlistStatus(widget.id);
+      Provider.of<TvDetailNotifier>(
+        context,
+        listen: false,
+      ).fetchTvDetail(widget.id);
+      Provider.of<TvDetailNotifier>(
+        context,
+        listen: false,
+      ).loadWatchlistStatus(widget.id);
     });
   }
 
@@ -304,15 +308,4 @@ class DetailContent extends StatelessWidget {
 
     return result.substring(0, result.length - 2);
   }
-
-  // String _showDuration(int runtime) {
-  //   final int hours = runtime ~/ 60;
-  //   final int minutes = runtime % 60;
-
-  //   if (hours > 0) {
-  //     return '${hours}h ${minutes}m';
-  //   } else {
-  //     return '${minutes}m';
-  //   }
-  // }
 }

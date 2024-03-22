@@ -1,0 +1,30 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/9wLRrDBRGtCD68BRF7BsD0RHHQ3.jpg",
+      "genre_ids": [
+        10759,
+        16,
+        35,
+        10765
+      ],
+      "id": 65733,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "originalName",
+      "overview": "Robotic cat Doraemon is sent back in time from the 22nd century to protect 10-year-old Noby, a lazy and uncoordinated boy who is destined to have a tragic future. Doraemon can create secret gadgets from a pocket on his stomach, but they usually cause more bad than good because of Nobys propensity to misuse them.",
+      "popularity": 829.85,
+      "poster_path": "/9ZN1P32SHviL3SV51qLivxycvcx.jpg",
+      "first_air_date": "2005-04-22",
+      "name": "Doraemon",
+      "vote_average": 7.7,
+      "vote_count": 100
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 3
+}

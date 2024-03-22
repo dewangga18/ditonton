@@ -1,0 +1,232 @@
+{
+    "adult": false,
+    "backdrop_path": "/3oZgE4220UrqaaiZXxz5MtNCVxJ.jpg",
+    "created_by": [],
+    "episode_run_time": [
+      180,
+      90
+    ],
+    "first_air_date": "2001-10-22",
+    "genres": [
+      {
+        "id": 10764,
+        "name": "Reality"
+      }
+    ],
+    "homepage": "",
+    "id": 12513,
+    "in_production": true,
+    "languages": [
+      "es"
+    ],
+    "last_air_date": "2024-01-26",
+    "last_episode_to_air": {
+      "id": 4957361,
+      "name": "OT Daily. Jan 26",
+      "overview": "",
+      "vote_average": 0,
+      "vote_count": 0,
+      "air_date": "2024-01-26",
+      "episode_number": 61,
+      "episode_type": "standard",
+      "production_code": "",
+      "runtime": 50,
+      "season_number": 12,
+      "show_id": 12513,
+      "still_path": "/pF09Rn6IMSeuryfD3maWId8YepK.jpg"
+    },
+    "name": "Operación Triunfo",
+    "next_episode_to_air": {
+      "id": 4957365,
+      "name": "OT Daily. Jan 27",
+      "overview": "",
+      "vote_average": 0,
+      "vote_count": 0,
+      "air_date": "2024-01-27",
+      "episode_number": 62,
+      "episode_type": "standard",
+      "production_code": "",
+      "runtime": 50,
+      "season_number": 12,
+      "show_id": 12513,
+      "still_path": "/pF09Rn6IMSeuryfD3maWId8YepK.jpg"
+    },
+    "networks": [
+      {
+        "id": 53,
+        "logo_path": "/nSksjyoitz94qhfon6uzJj6ekj9.png",
+        "name": "Telecinco",
+        "origin_country": "ES"
+      },
+      {
+        "id": 443,
+        "logo_path": "/dN6GTZyNY32q2onfrvJ2iAeE4su.png",
+        "name": "La 1",
+        "origin_country": "ES"
+      },
+      {
+        "id": 1024,
+        "logo_path": "/ifhbNuuVnlwYy5oXA5VIb2YR8AZ.png",
+        "name": "Prime Video",
+        "origin_country": ""
+      }
+    ],
+    "number_of_episodes": 248,
+    "number_of_seasons": 12,
+    "origin_country": [
+      "ES"
+    ],
+    "original_language": "es",
+    "original_name": "Operación Triunfo",
+    "overview": "Reality-show talent contest aimed to find the country's next solo singing sensation, putting a selection of hopefuls through their paces by getting them to sing a variety of cover versions of popular songs, with tutoring from various professionals.",
+    "popularity": 2092.564,
+    "poster_path": "/8Qfq22zP5PeUKJfN5bFPFJtJz5i.jpg",
+    "production_companies": [
+      {
+        "id": 96641,
+        "logo_path": "/zyOkMTdn2tyueZ1oLmN9s41ODxc.png",
+        "name": "Gestmusic",
+        "origin_country": "ES"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "ES",
+        "name": "Spain"
+      }
+    ],
+    "seasons": [
+      {
+        "air_date": "2001-10-22",
+        "episode_count": 18,
+        "id": 94164,
+        "name": "Season 1",
+        "overview": "",
+        "poster_path": "/qcKxSwSpyYlVWBx2mgXykmPWzeA.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2002-10-07",
+        "episode_count": 18,
+        "id": 95056,
+        "name": "Season 2",
+        "overview": "",
+        "poster_path": "/82icZrt9V2y2vwxqgYXaW08Ixoj.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2003-09-29",
+        "episode_count": 16,
+        "id": 94671,
+        "name": "Season 3",
+        "overview": "",
+        "poster_path": "/zMvRfRNYL3J8M6tGZKa0yXwLPZw.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2005-06-30",
+        "episode_count": 15,
+        "id": 95057,
+        "name": "Season 4",
+        "overview": "",
+        "poster_path": "/nJHgoj3dZ2Df78fMgfqqjMGNlbw.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2006-10-08",
+        "episode_count": 15,
+        "id": 94672,
+        "name": "Season 5",
+        "overview": "",
+        "poster_path": "/kYp2DKBYtYhlckXLV8WjZX9bByh.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2008-04-08",
+        "episode_count": 16,
+        "id": 95058,
+        "name": "Season 6",
+        "overview": "",
+        "poster_path": "/vQLqMkJqRzM4jn7Drr0sSBbudS9.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2009-04-29",
+        "episode_count": 14,
+        "id": 95059,
+        "name": "Season 7",
+        "overview": "",
+        "poster_path": "/lWNVAb1vJG9Beww46ewk5Oj3sRq.jpg",
+        "season_number": 7,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2011-01-16",
+        "episode_count": 6,
+        "id": 23393,
+        "name": "Season 8",
+        "overview": "This is the eighth series of Spanish reality TV show Operación Triunfo. It was presented by Pilar Rubio\n\nThe first program was broadcast on 16 January 2011 with the final on 20 February 2011, thus a considerably shorter run than the earlier series. the series was won by Nahuel Sachak.",
+        "poster_path": "/1I3pLxWagIKlspIairr9jMbpRbn.jpg",
+        "season_number": 8,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2017-10-23",
+        "episode_count": 19,
+        "id": 94348,
+        "name": "Season 9",
+        "overview": "",
+        "poster_path": "/nr151w1AkNdZOk9kjrWCmpzlPz4.jpg",
+        "season_number": 9,
+        "vote_average": 1
+      },
+      {
+        "air_date": "2018-09-19",
+        "episode_count": 16,
+        "id": 109573,
+        "name": "Season 10",
+        "overview": "",
+        "poster_path": "/eEK85PnV7ejY3J8jLlersYmUbmx.jpg",
+        "season_number": 10,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2020-01-12",
+        "episode_count": 14,
+        "id": 141223,
+        "name": "Season 11",
+        "overview": "",
+        "poster_path": "/o9mFdH8cNnKWHegOH8P6vW1dDzJ.jpg",
+        "season_number": 11,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2023-11-16",
+        "episode_count": 81,
+        "id": 338550,
+        "name": "Season 12",
+        "overview": "",
+        "poster_path": "/zjWVqrhNBBAC1aikQl4RTGNb5Cl.jpg",
+        "season_number": 12,
+        "vote_average": 0
+      }
+    ],
+    "spoken_languages": [
+      {
+        "english_name": "Spanish",
+        "iso_639_1": "es",
+        "name": "Español"
+      }
+    ],
+    "status": "Returning Series",
+    "tagline": "",
+    "type": "Reality",
+    "vote_average": 6.389,
+    "vote_count": 18
+  }

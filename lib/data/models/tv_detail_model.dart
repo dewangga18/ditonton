@@ -5,13 +5,13 @@ import 'package:equatable/equatable.dart';
 class TvDetailResponse extends Equatable {
   final bool? adult;
   final String? backdropPath;
-  final DateTime? firstAirDate;
+  final String? firstAirDate;
   final List<GenreModel>? genres;
   final String? homepage;
   final int? id;
   final bool? inProduction;
   final List<String>? languages;
-  final DateTime? lastAirDate;
+  final String? lastAirDate;
   final String? name;
   final int? numberOfEpisodes;
   final int? numberOfSeasons;
@@ -57,9 +57,7 @@ class TvDetailResponse extends Equatable {
       TvDetailResponse(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
-        firstAirDate: json["first_air_date"] == null
-            ? null
-            : DateTime.parse(json["first_air_date"]),
+        firstAirDate: json["first_air_date"],
         genres: json["genres"] == null
             ? []
             : List<GenreModel>.from(
@@ -71,9 +69,7 @@ class TvDetailResponse extends Equatable {
         languages: json["languages"] == null
             ? []
             : List<String>.from(json["languages"]!.map((x) => x)),
-        lastAirDate: json["last_air_date"] == null
-            ? null
-            : DateTime.parse(json["last_air_date"]),
+        lastAirDate: json["last_air_date"],
         name: json["name"],
         numberOfEpisodes: json["number_of_episodes"],
         numberOfSeasons: json["number_of_seasons"],
@@ -95,8 +91,7 @@ class TvDetailResponse extends Equatable {
   Map<String, dynamic> toJson() => {
         "adult": adult,
         "backdrop_path": backdropPath,
-        "first_air_date":
-            "${firstAirDate!.year.toString().padLeft(4, '0')}-${firstAirDate!.month.toString().padLeft(2, '0')}-${firstAirDate!.day.toString().padLeft(2, '0')}",
+        "first_air_date": firstAirDate,
         "genres": genres == null
             ? []
             : List<dynamic>.from(genres!.map((x) => x.toJson())),
@@ -106,8 +101,7 @@ class TvDetailResponse extends Equatable {
         "languages": languages == null
             ? []
             : List<dynamic>.from(languages!.map((x) => x)),
-        "last_air_date":
-            "${lastAirDate!.year.toString().padLeft(4, '0')}-${lastAirDate!.month.toString().padLeft(2, '0')}-${lastAirDate!.day.toString().padLeft(2, '0')}",
+        "last_air_date": lastAirDate,
         "name": name,
         "number_of_episodes": numberOfEpisodes,
         "number_of_seasons": numberOfSeasons,

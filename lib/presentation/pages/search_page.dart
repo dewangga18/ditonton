@@ -26,10 +26,14 @@ class SearchPage extends StatelessWidget {
             children: [
               TextField(
                 onSubmitted: (query) {
-                  Provider.of<MovieSearchNotifier>(context, listen: false)
-                      .fetchMovieSearch(query);
-                  Provider.of<TvSearchNotifier>(context, listen: false)
-                      .fetchTvSearch(query);
+                  Provider.of<MovieSearchNotifier>(
+                    context,
+                    listen: false,
+                  ).fetchMovieSearch(query);
+                  Provider.of<TvSearchNotifier>(
+                    context,
+                    listen: false,
+                  ).fetchTvSearch(query);
                 },
                 decoration: const InputDecoration(
                   hintText: 'Search title',

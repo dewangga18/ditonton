@@ -40,64 +40,64 @@ class _TopRatedPageState extends State<TopRatedPage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget child;
+    if (widget.index == 0) {
+      child = Consumer<TopRatedMoviesNotifier>(
+        builder: (context, data, child) {
+          if (data.state == RequestState.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (data.state == RequestState.loaded) {
+            return ListView.builder(
+              padding: const EdgeInsets.all(8.0),
+              itemBuilder: (context, index) {
+                final movie = data.movies[index];
+                return CardList(movie: movie);
+              },
+              itemCount: data.movies.length,
+            );
+          } else {
+            return Center(
+              key: const Key('error_message'),
+              child: Text(data.message),
+            );
+          }
+        },
+      );
+    } else {
+      child = Consumer<TopRatedTvsNotifier>(
+        builder: (context, data, child) {
+          if (data.state == RequestState.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (data.state == RequestState.loaded) {
+            return ListView.builder(
+              padding: const EdgeInsets.all(8.0),
+              itemBuilder: (context, index) {
+                final tv = data.tvs[index];
+                return CardList(tv: tv);
+              },
+              itemCount: data.tvs.length,
+            );
+          } else {
+            return Center(
+              key: const Key('error_message'),
+              child: Text(data.message),
+            );
+          }
+        },
+      );
+    }
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(
           widget.index == 0 ? 'Top Rated Movies' : 'Top Rated Tvs',
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: IndexedStack(
-          index: widget.index,
-          children: [
-            Consumer<TopRatedMoviesNotifier>(
-              builder: (context, data, child) {
-                if (data.state == RequestState.loading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (data.state == RequestState.loaded) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      final movie = data.movies[index];
-                      return CardList(movie: movie);
-                    },
-                    itemCount: data.movies.length,
-                  );
-                } else {
-                  return Center(
-                    key: const Key('error_message'),
-                    child: Text(data.message),
-                  );
-                }
-              },
-            ),
-            Consumer<TopRatedTvsNotifier>(
-              builder: (context, data, child) {
-                if (data.state == RequestState.loading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (data.state == RequestState.loaded) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      final tv = data.tvs[index];
-                      return CardList(tv: tv);
-                    },
-                    itemCount: data.tvs.length,
-                  );
-                } else {
-                  return Center(
-                    key: const Key('error_message'),
-                    child: Text(data.message),
-                  );
-                }
-              },
-            ),
-          ],
-        ),
-      ),
+      body: child,
     );
   }
 }

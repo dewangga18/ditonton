@@ -45,7 +45,7 @@ class Tv extends Equatable {
   final String? overview;
   final double? popularity;
   final String? posterPath;
-  final DateTime? firstAirDate;
+  final String? firstAirDate;
   final String? name;
   final double? voteAverage;
   final int? voteCount;

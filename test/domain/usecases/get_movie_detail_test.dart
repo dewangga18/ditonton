@@ -17,13 +17,17 @@ void main() {
 
   const tId = 1;
 
-  test('should get movie detail from the repository', () async {
-    // arrange
-    when(mockMovieRepository.getMovieDetail(tId))
-        .thenAnswer((_) async => const Right(testMovieDetail));
-    // act
-    final result = await usecase.execute(tId);
-    // assert
-    expect(result, const Right(testMovieDetail));
-  });
+  test(
+    'should get movie detail from the repository',
+    () async {
+      // arrange
+      when(
+        mockMovieRepository.getMovieDetail(tId),
+      ).thenAnswer((_) async => const Right(testMovieDetail));
+      // act
+      final result = await usecase.execute(tId);
+      // assert
+      expect(result, const Right(testMovieDetail));
+    },
+  );
 }

@@ -15,14 +15,18 @@ void main() {
     usecase = RemoveMovieWatchlist(mockMovieRepository);
   });
 
-  test('should remove watchlist movie from repository', () async {
-    // arrange
-    when(mockMovieRepository.removeMovieWatchlist(testMovieDetail))
-        .thenAnswer((_) async => const Right('Removed from watchlist'));
-    // act
-    final result = await usecase.execute(testMovieDetail);
-    // assert
-    verify(mockMovieRepository.removeMovieWatchlist(testMovieDetail));
-    expect(result, const Right('Removed from watchlist'));
-  });
+  test(
+    'should remove watchlist movie from repository',
+    () async {
+      // arrange
+      when(
+        mockMovieRepository.removeMovieWatchlist(testMovieDetail),
+      ).thenAnswer((_) async => const Right('Removed from watchlist'));
+      // act
+      final result = await usecase.execute(testMovieDetail);
+      // assert
+      verify(mockMovieRepository.removeMovieWatchlist(testMovieDetail));
+      expect(result, const Right('Removed from watchlist'));
+    },
+  );
 }

@@ -13,13 +13,17 @@ void main() {
     usecase = GetWatchListMovieStatus(mockMovieRepository);
   });
 
-  test('should get watchlist status from repository', () async {
-    // arrange
-    when(mockMovieRepository.isAddedToMovieWatchlist(1))
-        .thenAnswer((_) async => true);
-    // act
-    final result = await usecase.execute(1);
-    // assert
-    expect(result, true);
-  });
+  test(
+    'should get watchlist status from repository',
+    () async {
+      // arrange
+      when(
+        mockMovieRepository.isAddedToMovieWatchlist(1),
+      ).thenAnswer((_) async => true);
+      // act
+      final result = await usecase.execute(1);
+      // assert
+      expect(result, true);
+    },
+  );
 }
