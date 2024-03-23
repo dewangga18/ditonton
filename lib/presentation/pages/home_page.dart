@@ -1,8 +1,6 @@
-import 'package:ditonton/presentation/pages/about_page.dart';
+import 'package:core/utils/routes.dart';
 import 'package:ditonton/presentation/pages/movie_section.dart';
-import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/tv_section.dart';
-import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
 import 'package:flutter/material.dart';
@@ -66,12 +64,12 @@ class _HomePageState extends State<HomePage> {
               leading: const Icon(Icons.save_alt),
               title: const Text('Watchlist'),
               onTap: () {
-                Navigator.pushNamed(context, WatchlistMoviesPage.routeName);
+                Navigator.pushNamed(context, WATCHLIST_ROUTE);
               },
             ),
             ListTile(
               onTap: () {
-                Navigator.pushNamed(context, AboutPage.routeName);
+                Navigator.pushNamed(context, ABOUT_ROUTE);
               },
               leading: const Icon(Icons.info_outline),
               title: const Text('About'),
@@ -84,7 +82,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, SearchPage.routeName);
+              Navigator.pushNamed(context, SEARCH_ROUTE);
             },
             icon: const Icon(Icons.search),
           )

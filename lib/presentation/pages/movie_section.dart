@@ -1,13 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/movie.dart';
-import 'package:ditonton/presentation/pages/movie_detail_page.dart';
-import 'package:ditonton/presentation/pages/popular_page.dart';
-import 'package:ditonton/presentation/pages/top_rated_page.dart';
+import 'package:core/core.dart';
+import 'package:core/utils/routes.dart';
 import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/widgets/space_x.dart';
+import 'package:core/widgets/space_x.dart';
 import 'package:flutter/material.dart';
+import 'package:movie/domain/entities/movie.dart';
 import 'package:provider/provider.dart';
 
 class MovieSection extends StatelessWidget {
@@ -46,7 +43,7 @@ class MovieSection extends StatelessWidget {
               title: 'Popular',
               onTap: () => Navigator.pushNamed(
                 context,
-                PopularPage.routeName,
+                POPULAR_ROUTE,
                 arguments: 0,
               ),
             ),
@@ -66,7 +63,7 @@ class MovieSection extends StatelessWidget {
               title: 'Top Rated',
               onTap: () => Navigator.pushNamed(
                 context,
-                TopRatedPage.routeName,
+                TOP_RATED_ROUTE,
                 arguments: 0,
               ),
             ),
@@ -132,7 +129,7 @@ class MovieList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  MovieDetailPage.routeName,
+                  MOVIE_DETAIL_ROUTE,
                   arguments: movie.id,
                 );
               },

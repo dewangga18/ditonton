@@ -9,6 +9,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "64.0.0"
+  about:
+    dependency: "direct main"
+    description:
+      path: "packages/about"
+      relative: true
+    source: path
+    version: "0.0.1"
   analyzer:
     dependency: transitive
     description:
@@ -177,6 +184,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  core:
+    dependency: "direct main"
+    description:
+      path: "packages/core"
+      relative: true
+    source: path
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:
@@ -451,6 +465,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.4"
+  movie:
+    dependency: "direct main"
+    description:
+      path: "packages/movie"
+      relative: true
+    source: path
+    version: "0.0.1"
   nested:
     dependency: transitive
     description:
@@ -587,6 +608,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+  search:
+    dependency: "direct main"
+    description:
+      path: "packages/search"
+      relative: true
+    source: path
+    version: "0.0.1"
   shelf:
     dependency: transitive
     description:
@@ -712,6 +740,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  tv:
+    dependency: "direct main"
+    description:
+      path: "packages/tv"
+      relative: true
+    source: path
+    version: "0.0.1"
   typed_data:
     dependency: transitive
     description:
@@ -752,6 +787,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  watchlist:
+    dependency: "direct main"
+    description:
+      path: "packages/watchlist"
+      relative: true
+    source: path
+    version: "0.0.1"
   web:
     dependency: transitive
     description:
@@ -793,5 +835,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.2.5 <4.0.0"
+  dart: ">=3.3.1 <4.0.0"
   flutter: ">=3.10.0"

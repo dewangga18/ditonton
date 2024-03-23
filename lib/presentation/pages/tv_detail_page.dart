@@ -1,19 +1,17 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/genre.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/entities/tv.dart';
-import 'package:ditonton/domain/entities/tv_detail.dart';
+import 'package:core/core.dart';
+import 'package:core/entity/genre.dart';
+import 'package:core/utils/routes.dart';
+import 'package:tv/domain/entities/tv.dart';
+import 'package:tv/domain/entities/tv_detail.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
 
 class TvDetailPage extends StatefulWidget {
-  static const routeName = '/detail-tv';
-
   final int id;
 
   const TvDetailPage({
@@ -226,7 +224,7 @@ class DetailContent extends StatelessWidget {
                                             onTap: () {
                                               Navigator.pushReplacementNamed(
                                                 context,
-                                                TvDetailPage.routeName,
+                                                TV_DETAIL_ROUTE,
                                                 arguments: movie.id,
                                               );
                                             },

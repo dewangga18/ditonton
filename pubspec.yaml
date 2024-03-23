@@ -39,6 +39,20 @@ dependencies:
   sqflite: ^2.0.0+3
   path_provider: ^2.0.2
 
+  # modularization
+  about:
+    path: packages/about
+  core:
+    path: packages/core
+  search:
+    path: packages/search
+  movie:
+    path: packages/movie
+  tv:
+    path: packages/tv
+  watchlist:
+    path: packages/watchlist
+
 dev_dependencies:
   mockito: ^5.0.8
   build_runner: ^2.0.4  

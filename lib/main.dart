@@ -1,29 +1,31 @@
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/common/utils.dart';
-import 'package:ditonton/presentation/pages/about_page.dart';
-import 'package:ditonton/presentation/pages/movie_detail_page.dart';
+import 'package:about/presentation/about_page.dart';
+import 'package:core/styles/colors.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/utils/routes.dart';
+import 'package:core/utils/utils.dart';
 import 'package:ditonton/presentation/pages/home_page.dart';
+import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/popular_page.dart';
-import 'package:ditonton/presentation/pages/search_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_page.dart';
 import 'package:ditonton/presentation/pages/tv_detail_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
+import 'package:watchlist/presentation/page/watchlist_page.dart';
 import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/movie_search_notifier.dart';
 import 'package:ditonton/presentation/provider/movies/popular_movies_notifier.dart';
 import 'package:ditonton/presentation/provider/movies/top_rated_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/watchlist_movie_notifier.dart';
+import 'package:watchlist/presentation/provider/movie/watchlist_movie_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/popular_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/top_rated_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_search_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/watchlist_tv_notifier.dart';
+import 'package:watchlist/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
+import 'package:search/presentation/pages/search_page.dart';
+import 'package:search/presentation/provider/movie_search_notifier.dart';
+import 'package:search/presentation/provider/tv_search_notifier.dart';
 
 void main() {
   di.init();
@@ -86,37 +88,37 @@ class MyApp extends StatelessWidget {
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
-            case '/home':
+            case HOME_ROUTE:
               return MaterialPageRoute(builder: (_) => const HomePage());
-            case PopularPage.routeName:
+            case POPULAR_ROUTE:
               final index = settings.arguments as int;
               return CupertinoPageRoute(
                 builder: (_) => PopularPage(index: index),
               );
-            case TopRatedPage.routeName:
+            case TOP_RATED_ROUTE:
               final index = settings.arguments as int;
               return CupertinoPageRoute(
                 builder: (_) => TopRatedPage(index: index),
               );
-            case MovieDetailPage.routeName:
+            case MOVIE_DETAIL_ROUTE:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => MovieDetailPage(id: id),
                 settings: settings,
               );
-            case TvDetailPage.routeName:
+            case TV_DETAIL_ROUTE:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                 builder: (_) => TvDetailPage(id: id),
                 settings: settings,
               );
-            case SearchPage.routeName:
+            case SEARCH_ROUTE:
               return CupertinoPageRoute(builder: (_) => const SearchPage());
-            case WatchlistMoviesPage.routeName:
+            case WATCHLIST_ROUTE:
               return MaterialPageRoute(
-                builder: (_) => const WatchlistMoviesPage(),
+                builder: (_) => const WatchlistPage(),
               );
-            case AboutPage.routeName:
+            case ABOUT_ROUTE:
               return MaterialPageRoute(builder: (_) => const AboutPage());
             default:
               return MaterialPageRoute(

@@ -1,12 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ditonton/common/constants.dart';
-import 'package:ditonton/domain/entities/tv.dart';
-import 'package:ditonton/presentation/pages/popular_page.dart';
-import 'package:ditonton/presentation/pages/top_rated_page.dart';
-import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/presentation/pages/tv_detail_page.dart';
+import 'package:core/core.dart';
+import 'package:core/utils/routes.dart';
+import 'package:tv/domain/entities/tv.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
-import 'package:ditonton/presentation/widgets/space_x.dart';
+import 'package:core/widgets/space_x.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +43,7 @@ class TvSection extends StatelessWidget {
               title: 'Popular',
               onTap: () => Navigator.pushNamed(
                 context,
-                PopularPage.routeName,
+                POPULAR_ROUTE,
                 arguments: 1,
               ),
             ),
@@ -66,7 +63,7 @@ class TvSection extends StatelessWidget {
               title: 'Top Rated',
               onTap: () => Navigator.pushNamed(
                 context,
-                TopRatedPage.routeName,
+                TOP_RATED_ROUTE,
                 arguments: 1,
               ),
             ),
@@ -133,7 +130,7 @@ class TvList extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  TvDetailPage.routeName,
+                  TV_DETAIL_ROUTE,
                   arguments: tv.id,
                 );
               },
