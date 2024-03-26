@@ -1,9 +1,9 @@
 import 'package:core/core.dart';
 import 'package:core/widgets/card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
-import 'package:search/presentation/provider/tv_search_notifier.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search/bloc/movie/movie_search_bloc.dart';
+import 'package:search/bloc/tv/tv_search_bloc.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -22,15 +22,9 @@ class SearchPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextField(
-                onSubmitted: (query) {
-                  Provider.of<MovieSearchNotifier>(
-                    context,
-                    listen: false,
-                  ).fetchMovieSearch(query);
-                  Provider.of<TvSearchNotifier>(
-                    context,
-                    listen: false,
-                  ).fetchTvSearch(query);
+                onChanged: (query) {
+                  context.read<MovieSearchBloc>().add(MovieOnQueryChanged(query));
+                  context.read<TvSearchBloc>().add(TvOnQueryChanged(query));
                 },
                 decoration: const InputDecoration(
                   hintText: 'Search title',
@@ -56,44 +50,56 @@ class SearchPage extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    Consumer<MovieSearchNotifier>(
-                      builder: (context, data, child) {
-                        if (data.state == RequestState.loading) {
+                    BlocBuilder<MovieSearchBloc, MovieSearchState>(
+                      builder: (context, state) {
+                        if (state is MovieSearchLoading) {
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
-                        } else if (data.state == RequestState.loaded) {
-                          final result = data.searchResult;
+                        } else if (state is MovieSearchHasData) {
+                          final result = state.result;
+
                           return ListView.builder(
                             shrinkWrap: true,
                             padding: const EdgeInsets.all(8),
                             itemBuilder: (context, index) {
-                              final movie = data.searchResult[index];
+                              final movie = result[index];
+                          
                               return CardList(movie: movie);
                             },
                             itemCount: result.length,
+                          );
+                        } else if (state is MovieSearchError) {
+                          return Center(
+                            child: Text(state.message),
                           );
                         } else {
                           return Container();
                         }
                       },
                     ),
-                    Consumer<TvSearchNotifier>(
-                      builder: (context, data, child) {
-                        if (data.state == RequestState.loading) {
+                    BlocBuilder<TvSearchBloc, TvSearchState>(
+                      builder: (context, state) {
+                        if (state is TvSearchLoading) {
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
-                        } else if (data.state == RequestState.loaded) {
-                          final result = data.searchResult;
+                        } else if (state is TvSearchHasData) {
+                          final result = state.result;
+
                           return ListView.builder(
                             shrinkWrap: true,
                             padding: const EdgeInsets.all(8),
                             itemBuilder: (context, index) {
-                              final tv = data.searchResult[index];
+                              final tv = result[index];
+                          
                               return CardList(tv: tv);
                             },
                             itemCount: result.length,
+                          );
+                        } else if (state is TvSearchError) {
+                          return Center(
+                            child: Text(state.message),
                           );
                         } else {
                           return Container();

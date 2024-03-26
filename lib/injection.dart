@@ -7,8 +7,8 @@ import 'package:movie/domain/usecases/get_movie_recommendations.dart';
 import 'package:movie/domain/usecases/get_now_playing_movies.dart';
 import 'package:movie/domain/usecases/get_popular_movies.dart';
 import 'package:movie/domain/usecases/get_top_rated_movies.dart';
-import 'package:search/presentation/provider/movie_search_notifier.dart';
-import 'package:search/presentation/provider/tv_search_notifier.dart';
+import 'package:search/bloc/movie/movie_search_bloc.dart';
+import 'package:search/bloc/tv/tv_search_bloc.dart';
 import 'package:search/usecases/search_movies.dart';
 import 'package:search/usecases/search_tv.dart';
 import 'package:tv/data/datasources/tv_local_data_source.dart';
@@ -63,9 +63,10 @@ void init() {
     ),
   );
   locator.registerFactory(
-    () => MovieSearchNotifier(
-      searchMovies: locator(),
-    ),
+    () => MovieSearchBloc(locator()),
+  );
+  locator.registerFactory(
+    () => TvSearchBloc(locator()),
   );
   locator.registerFactory(
     () => PopularMoviesNotifier(
@@ -96,11 +97,6 @@ void init() {
       getWatchListStatus: locator(),
       saveWatchlist: locator(),
       removeWatchlist: locator(),
-    ),
-  );
-  locator.registerFactory(
-    () => TvSearchNotifier(
-      searchTvs: locator(),
     ),
   );
   locator.registerFactory(
