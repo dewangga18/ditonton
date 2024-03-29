@@ -8,6 +8,7 @@ import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/popular_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_page.dart';
 import 'package:ditonton/presentation/pages/tv_detail_page.dart';
+import 'package:ditonton/utils/ssl_pinning.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/bloc/movie/movie_search_bloc.dart';
 import 'package:search/bloc/tv/tv_search_bloc.dart';
@@ -28,8 +29,11 @@ import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/pages/search_page.dart';
 
-void main() {
-  di.init();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  /// [update] impement ssl pinning
+  final client = await getSSLPinningClient();
+  di.init(client);
   runApp(const MyApp());
 }
 

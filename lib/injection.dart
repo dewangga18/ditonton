@@ -1,3 +1,4 @@
+import 'package:http/http.dart';
 import 'package:movie/data/datasources/movie_local_data_source.dart';
 import 'package:movie/data/datasources/movie_remote_data_source.dart';
 import 'package:movie/data/repository/movie_repository_impl.dart';
@@ -24,7 +25,6 @@ import 'package:ditonton/presentation/provider/tvs/top_rated_tv_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
 import 'package:watchlist/presentation/provider/tv/watchlist_tv_notifier.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:tv/domain/repository/tv_repository.dart';
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart';
@@ -44,7 +44,7 @@ import 'package:watchlist/usecases/tv/save_tv_watchlist.dart';
 
 final locator = GetIt.instance;
 
-void init() {
+void init(Client client) async {
   /// provider
   locator.registerFactory(
     () => MovieListNotifier(
@@ -170,5 +170,5 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   /// external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => client);
 }
