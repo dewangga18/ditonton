@@ -11,14 +11,14 @@ class PopularTvBloc extends Bloc<PopularTvEvent, PopularTvState> {
   final GetPopularTvs _popularTv;
 
   PopularTvBloc(this._popularTv) : super(PopularTvEmpty()) {
-    on<PopularTvEvent>((event, emit) async {
+    on<FetchPopularTv>((event, emit) async {
       emit(PopularTvLoading());
-        final result = await _popularTv.execute();
+      final result = await _popularTv.execute();
 
-        result.fold(
-          (failure) => emit(PopularTvError(failure)),
-          (data) => emit(PopularTvHasData(data)),
-        );
+      result.fold(
+        (failure) => emit(PopularTvError(failure)),
+        (data) => emit(PopularTvHasData(data)),
+      );
     });
   }
 }

@@ -6,6 +6,8 @@ import 'package:movie/domain/repository/movie_repository.dart';
 import 'package:movie/domain/usecases/get_movie_detail.dart';
 import 'package:movie/domain/usecases/get_movie_recommendations.dart';
 import 'package:movie/domain/usecases/get_now_playing_movies.dart';
+import 'package:movie/presentation/bloc/detail/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/list/movie_list_bloc.dart';
 import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
 import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
 import 'package:popular/usecases/get_popular_movies.dart';
@@ -21,12 +23,10 @@ import 'package:top_rated/usecases/get_top_rated_tvs.dart';
 import 'package:tv/data/datasources/tv_local_data_source.dart';
 import 'package:tv/data/datasources/tv_remote_data_source.dart';
 import 'package:tv/data/repository/tv_repository_impl.dart';
-import 'package:movie/presentation/providers/movie_detail_notifier.dart';
-import 'package:movie/presentation/providers/movie_list_notifier.dart';
+import 'package:tv/presentation/bloc/detail/tv_detail_bloc.dart';
+import 'package:tv/presentation/bloc/list/tv_list_bloc.dart';
 import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
 import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
-import 'package:tv/presentation/providers/tv_detail_notifier.dart';
-import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tv/domain/repository/tv_repository.dart';
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart';
@@ -47,17 +47,13 @@ final locator = GetIt.instance;
 void init(Client client) async {
   /// provider
   locator.registerFactory(
-    () => MovieListNotifier(
-      getNowPlayingMovies: locator(),
-      getPopularMovies: locator(),
-      getTopRatedMovies: locator(),
-    ),
+    () => MovieListBloc(locator()),
   );
   locator.registerFactory(
-    () => MovieDetailNotifier(
-      getMovieDetail: locator(),
-      getMovieRecommendations: locator(),
-      getWatchListStatus: locator(),
+    () => MovieDetailBloc(
+      detailData: locator(),
+      recommendations: locator(),
+      watchListStatus: locator(),
       saveWatchlist: locator(),
       removeWatchlist: locator(),
     ),
@@ -75,17 +71,13 @@ void init(Client client) async {
     () => TopRatedMovieBloc(locator()),
   );
   locator.registerFactory(
-    () => TvListNotifier(
-      getNowPlayingTvs: locator(),
-      getPopularTvs: locator(),
-      getTopRatedTvs: locator(),
-    ),
+    () => TvListBloc(locator()),
   );
   locator.registerFactory(
-    () => TvDetailNotifier(
-      getTvDetail: locator(),
-      getTvRecommendations: locator(),
-      getWatchListStatus: locator(),
+    () => TvDetailBloc(
+      detailData: locator(),
+      recommendations: locator(),
+      watchListStatus: locator(),
       saveWatchlist: locator(),
       removeWatchlist: locator(),
     ),

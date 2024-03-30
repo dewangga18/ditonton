@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:core/utils/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv/domain/entities/tv.dart';
-import 'package:tv/presentation/providers/tv_list_notifier.dart';
+import 'package:tv/presentation/bloc/list/tv_list_bloc.dart';
 import 'package:core/widgets/space_x.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
 import 'package:top_rated/presentation/bloc/tv/top_rated_tv_bloc.dart';
 
@@ -29,64 +29,76 @@ class TvSection extends StatelessWidget {
               'Now Playing',
               style: kHeading6,
             ),
-            Consumer<TvListNotifier>(builder: (context, data, child) {
-              final state = data.nowPlayingState;
-              if (state == RequestState.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state == RequestState.loaded) {
-                return TvList(tvs: data.nowPlayingTvs);
-              } else {
-                return const Text('Failed');
-              }
-            }),
+            BlocBuilder<TvListBloc, TvListState>(
+              builder: (context, state) {
+                if (state is TvListLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is TvListHasData) {
+                  return TvList(tvs: state.result);
+                } else if (state is TvListError) {
+                  return Center(
+                    key: const Key('error_message'),
+                    child: Text(state.error.message),
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            ),
             _buildSubHeading(
               title: 'Popular',
-               onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  POPULAR_ROUTE,
-                  arguments: 1,
-                );
-                context.read<PopularTvBloc>().add(FetchPopularTv());
+              onTap: () => Navigator.pushNamed(
+                context,
+                POPULAR_ROUTE,
+                arguments: 1,
+              ),
+            ),
+            BlocBuilder<PopularTvBloc, PopularTvState>(
+              builder: (context, state) {
+                if (state is PopularTvLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is PopularTvHasData) {
+                  return TvList(tvs: state.result);
+                } else if (state is PopularTvError) {
+                  return Center(
+                    key: const Key('error_message'),
+                    child: Text(state.error.message),
+                  );
+                } else {
+                  return Container();
+                }
               },
             ),
-            Consumer<TvListNotifier>(builder: (context, data, child) {
-              final state = data.popularTvsState;
-              if (state == RequestState.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state == RequestState.loaded) {
-                return TvList(tvs: data.popularTvs);
-              } else {
-                return const Text('Failed');
-              }
-            }),
             _buildSubHeading(
               title: 'Top Rated',
-             onTap: () {
-                Navigator.pushNamed(
-                  context,
-                  TOP_RATED_ROUTE,
-                  arguments: 1,
-                );
-                context.read<TopRatedTvBloc>().add(FetchTopRatedTv());
+              onTap: () => Navigator.pushNamed(
+                context,
+                TOP_RATED_ROUTE,
+                arguments: 1,
+              ),
+            ),
+            BlocBuilder<TopRatedTvBloc, TopRatedTvState>(
+              builder: (context, state) {
+                if (state is TopRatedTvLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (state is TopRatedTvHasData) {
+                  return TvList(tvs: state.result);
+                } else if (state is TopRatedTvError) {
+                  return Center(
+                    key: const Key('error_message'),
+                    child: Text(state.error.message),
+                  );
+                } else {
+                  return Container();
+                }
               },
             ),
-            Consumer<TvListNotifier>(builder: (context, data, child) {
-              final state = data.topRatedTvsState;
-              if (state == RequestState.loading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else if (state == RequestState.loaded) {
-                return TvList(tvs: data.topRatedTvs);
-              } else {
-                return const Text('Failed');
-              }
-            }),
           ],
         ),
       ),

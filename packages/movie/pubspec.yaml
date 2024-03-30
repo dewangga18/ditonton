@@ -12,11 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^1.1.0
-  equatable: ^2.0.2
   dartz: ^0.10.0-nullsafety.2
-  provider: ^6.0.3
   flutter_rating_bar: ^4.0.0
   cached_network_image: ^3.0.0
+  flutter_bloc: ^8.0.0
+  equatable: ^2.0.5
+  bloc: ^8.1.4
+  rxdart: ^0.27.1
 
   # modularization
   watchlist:
@@ -36,7 +38,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   mockito: ^5.0.8
   build_runner: ^2.0.4  
-  sqflite_common: ^2.5.0+2
+  bloc_test: ^9.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

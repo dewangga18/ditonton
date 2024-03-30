@@ -5,12 +5,16 @@ import 'package:core/utils/routes.dart';
 import 'package:core/utils/utils.dart';
 import 'package:ditonton/firebase_options.dart';
 import 'package:ditonton/presentation/pages/home_page.dart';
+import 'package:movie/presentation/bloc/detail/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/list/movie_list_bloc.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
 import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
 import 'package:top_rated/presentation/bloc/movie/top_rated_movie_bloc.dart';
 import 'package:top_rated/presentation/bloc/tv/top_rated_tv_bloc.dart';
 import 'package:top_rated/presentation/pages/top_rated_page.dart';
+import 'package:tv/presentation/bloc/detail/tv_detail_bloc.dart';
+import 'package:tv/presentation/bloc/list/tv_list_bloc.dart';
 import 'package:tv/presentation/pages/tv_detail_page.dart';
 import 'package:ditonton/utils/ssl_pinning.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,13 +25,8 @@ import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
 import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 import 'package:watchlist/presentation/page/watchlist_page.dart';
-import 'package:movie/presentation/providers/movie_detail_notifier.dart';
-import 'package:movie/presentation/providers/movie_list_notifier.dart';
-import 'package:tv/presentation/providers/tv_detail_notifier.dart';
-import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:search/presentation/pages/search_page.dart';
 
@@ -49,19 +48,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<MovieDetailBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<MovieDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TvDetailBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvListNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<MovieListBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TvDetailNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TvListBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<PopularMoviesBloc>(),

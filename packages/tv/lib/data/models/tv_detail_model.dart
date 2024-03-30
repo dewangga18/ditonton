@@ -8,7 +8,7 @@ class TvDetailResponse extends Equatable {
   final String? firstAirDate;
   final List<GenreModel>? genres;
   final String? homepage;
-  final int? id;
+  final int id;
   final bool? inProduction;
   final List<String>? languages;
   final String? lastAirDate;
@@ -33,7 +33,7 @@ class TvDetailResponse extends Equatable {
     this.firstAirDate,
     this.genres,
     this.homepage,
-    this.id,
+    required this.id,
     this.inProduction,
     this.languages,
     this.lastAirDate,

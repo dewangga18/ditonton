@@ -11,10 +11,10 @@ class PopularMoviesBloc extends Bloc<PopularMoviesEvent, PopularMoviesState> {
   final GetPopularMovies _popularMovies;
 
   PopularMoviesBloc(this._popularMovies) : super(PopularMoviesEmpty()) {
-    on<PopularMoviesEvent>((event, emit) async {
+    on<FetchPopularMovie>((event, emit) async {
       emit(PopularMoviesLoading());
         final result = await _popularMovies.execute();
-
+        
         result.fold(
           (failure) => emit(PopularMoviesError(failure)),
           (data) => emit(PopularMoviesHasData(data)),
