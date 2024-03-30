@@ -1,8 +1,8 @@
 import 'package:core/test/dummy_data/dummy_objects.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:tv/domain/entities/tv.dart';
-import 'package:ditonton/presentation/pages/tv_detail_page.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart';
+import 'package:tv/presentation/pages/tv_detail_page.dart';
+import 'package:tv/presentation/providers/tv_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

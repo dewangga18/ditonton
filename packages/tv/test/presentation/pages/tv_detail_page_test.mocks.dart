@@ -7,7 +7,7 @@ import 'dart:async' as _i12;
 import 'dart:ui' as _i13;
 
 import 'package:core/utils/state_enum.dart' as _i9;
-import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart'
+import 'package:tv/presentation/providers/tv_detail_notifier.dart'
     as _i8;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i11;

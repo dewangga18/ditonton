@@ -4,7 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:core/entity/genre.dart';
 import 'package:core/utils/routes.dart';
-import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
+import 'package:movie/presentation/providers/movie_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie/domain/entities/movie.dart';

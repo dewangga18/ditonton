@@ -3,25 +3,27 @@ import 'package:core/styles/colors.dart';
 import 'package:core/styles/text_styles.dart';
 import 'package:core/utils/routes.dart';
 import 'package:core/utils/utils.dart';
+import 'package:ditonton/firebase_options.dart';
 import 'package:ditonton/presentation/pages/home_page.dart';
-import 'package:ditonton/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/popular_page.dart';
 import 'package:ditonton/presentation/pages/top_rated_page.dart';
-import 'package:ditonton/presentation/pages/tv_detail_page.dart';
+import 'package:tv/presentation/pages/tv_detail_page.dart';
 import 'package:ditonton/utils/ssl_pinning.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/bloc/movie/movie_search_bloc.dart';
 import 'package:search/bloc/tv/tv_search_bloc.dart';
 import 'package:watchlist/presentation/page/watchlist_page.dart';
-import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/popular_movies_notifier.dart';
-import 'package:ditonton/presentation/provider/movies/top_rated_movies_notifier.dart';
+import 'package:movie/presentation/providers/movie_detail_notifier.dart';
+import 'package:movie/presentation/providers/movie_list_notifier.dart';
+import 'package:movie/presentation/providers/popular_movies_notifier.dart';
+import 'package:movie/presentation/providers/top_rated_movies_notifier.dart';
 import 'package:watchlist/presentation/provider/movie/watchlist_movie_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/popular_tv_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/top_rated_tv_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
+import 'package:tv/presentation/providers/popular_tv_notifier.dart';
+import 'package:tv/presentation/providers/top_rated_tv_notifier.dart';
+import 'package:tv/presentation/providers/tv_detail_notifier.dart';
+import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:watchlist/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +33,14 @@ import 'package:search/presentation/pages/search_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   /// [update] impement ssl pinning
   final client = await getSSLPinningClient();
   di.init(client);
+  /// [firebase] init
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

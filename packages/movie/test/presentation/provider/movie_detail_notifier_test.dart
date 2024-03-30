@@ -1,7 +1,7 @@
 import 'package:core/test/dummy_data/dummy_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:core/utils/failure.dart';
-import 'package:ditonton/presentation/provider/movies/movie_detail_notifier.dart';
+import 'package:movie/presentation/providers/movie_detail_notifier.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

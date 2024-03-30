@@ -1,8 +1,8 @@
 import 'package:core/utils/routes.dart';
-import 'package:ditonton/presentation/pages/movie_section.dart';
-import 'package:ditonton/presentation/pages/tv_section.dart';
-import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
+import 'package:movie/presentation/pages/movie_section.dart';
+import 'package:movie/presentation/providers/movie_list_notifier.dart';
+import 'package:tv/presentation/pages/tv_section.dart';
+import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

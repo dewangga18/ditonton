@@ -7,7 +7,7 @@ import 'dart:async' as _i7;
 import 'dart:ui' as _i8;
 
 import 'package:core/utils/state_enum.dart' as _i4;
-import 'package:ditonton/presentation/provider/tvs/top_rated_tv_notifier.dart'
+import 'package:tv/presentation/providers/top_rated_tv_notifier.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;

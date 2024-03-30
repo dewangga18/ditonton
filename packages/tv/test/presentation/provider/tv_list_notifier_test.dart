@@ -4,7 +4,7 @@ import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart';
 import 'package:tv/domain/usecases/get_popular_tvs.dart';
 import 'package:tv/domain/usecases/get_top_rated_tvs.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_list_notifier.dart';
+import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

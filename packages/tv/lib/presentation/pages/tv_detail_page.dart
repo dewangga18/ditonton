@@ -6,10 +6,10 @@ import 'package:core/entity/genre.dart';
 import 'package:core/utils/routes.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/domain/entities/tv_detail.dart';
-import 'package:ditonton/presentation/provider/tvs/tv_detail_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
+import 'package:tv/presentation/providers/tv_detail_notifier.dart';
 
 class TvDetailPage extends StatefulWidget {
   final int id;

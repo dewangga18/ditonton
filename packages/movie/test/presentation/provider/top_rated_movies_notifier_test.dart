@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/presentation/provider/movies/top_rated_movies_notifier.dart';
+import 'package:movie/presentation/providers/top_rated_movies_notifier.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

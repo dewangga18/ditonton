@@ -1,6 +1,6 @@
 import 'package:core/utils/state_enum.dart';
 import 'package:ditonton/presentation/pages/popular_page.dart';
-import 'package:ditonton/presentation/provider/tvs/popular_tv_notifier.dart';
+import 'package:tv/presentation/providers/popular_tv_notifier.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

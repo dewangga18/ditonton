@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/core.dart';
 import 'package:core/utils/routes.dart';
-import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
+import 'package:tv/domain/entities/tv.dart';
+import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:core/widgets/space_x.dart';
 import 'package:flutter/material.dart';
-import 'package:movie/domain/entities/movie.dart';
 import 'package:provider/provider.dart';
 
-class MovieSection extends StatelessWidget {
-  const MovieSection({super.key});
+class TvSection extends StatelessWidget {
+  const TvSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class MovieSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Movie Area',
+              'Tv Area',
               style: kHeading5,
             ),
             15.verticalSpace,
@@ -27,14 +27,14 @@ class MovieSection extends StatelessWidget {
               'Now Playing',
               style: kHeading6,
             ),
-            Consumer<MovieListNotifier>(builder: (context, data, child) {
+            Consumer<TvListNotifier>(builder: (context, data, child) {
               final state = data.nowPlayingState;
               if (state == RequestState.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state == RequestState.loaded) {
-                return MovieList(movies: data.nowPlayingMovies);
+                return TvList(tvs: data.nowPlayingTvs);
               } else {
                 return const Text('Failed');
               }
@@ -44,17 +44,17 @@ class MovieSection extends StatelessWidget {
               onTap: () => Navigator.pushNamed(
                 context,
                 POPULAR_ROUTE,
-                arguments: 0,
+                arguments: 1,
               ),
             ),
-            Consumer<MovieListNotifier>(builder: (context, data, child) {
-              final state = data.popularMoviesState;
+            Consumer<TvListNotifier>(builder: (context, data, child) {
+              final state = data.popularTvsState;
               if (state == RequestState.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state == RequestState.loaded) {
-                return MovieList(movies: data.popularMovies);
+                return TvList(tvs: data.popularTvs);
               } else {
                 return const Text('Failed');
               }
@@ -64,17 +64,17 @@ class MovieSection extends StatelessWidget {
               onTap: () => Navigator.pushNamed(
                 context,
                 TOP_RATED_ROUTE,
-                arguments: 0,
+                arguments: 1,
               ),
             ),
-            Consumer<MovieListNotifier>(builder: (context, data, child) {
-              final state = data.topRatedMoviesState;
+            Consumer<TvListNotifier>(builder: (context, data, child) {
+              final state = data.topRatedTvsState;
               if (state == RequestState.loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state == RequestState.loaded) {
-                return MovieList(movies: data.topRatedMovies);
+                return TvList(tvs: data.topRatedTvs);
               } else {
                 return const Text('Failed');
               }
@@ -107,12 +107,12 @@ class MovieSection extends StatelessWidget {
   }
 }
 
-class MovieList extends StatelessWidget {
-  final List<Movie> movies;
+class TvList extends StatelessWidget {
+  final List<Tv> tvs;
 
-  const MovieList({
+  const TvList({
     super.key,
-    required this.movies,
+    required this.tvs,
   });
 
   @override
@@ -122,31 +122,32 @@ class MovieList extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          final movie = movies[index];
+          final tv = tvs[index];
+
           return Container(
             padding: const EdgeInsets.all(8),
             child: InkWell(
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  MOVIE_DETAIL_ROUTE,
-                  arguments: movie.id,
+                  TV_DETAIL_ROUTE,
+                  arguments: tv.id,
                 );
               },
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$baseImageUrl${movie.posterPath}',
+                  imageUrl: '$baseImageUrl${tv.posterPath}',
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  errorWidget: (_, url, error) => const Icon(Icons.error),
                 ),
               ),
             ),
           );
         },
-        itemCount: movies.length,
+        itemCount: tvs.length,
       ),
     );
   }

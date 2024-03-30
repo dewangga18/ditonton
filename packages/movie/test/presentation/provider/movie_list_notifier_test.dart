@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:core/utils/failure.dart';
-import 'package:ditonton/presentation/provider/movies/movie_list_notifier.dart';
+import 'package:movie/presentation/providers/movie_list_notifier.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
