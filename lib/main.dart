@@ -12,8 +12,10 @@ import 'package:tv/presentation/pages/tv_detail_page.dart';
 import 'package:ditonton/utils/ssl_pinning.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:search/bloc/movie/movie_search_bloc.dart';
-import 'package:search/bloc/tv/tv_search_bloc.dart';
+import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
+import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
+import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
+import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 import 'package:watchlist/presentation/page/watchlist_page.dart';
 import 'package:movie/presentation/providers/movie_detail_notifier.dart';
 import 'package:movie/presentation/providers/movie_list_notifier.dart';
@@ -86,6 +88,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => di.locator<TvSearchBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistMovieBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<WatchlistTvBloc>(),
         ),
       ],
       child: MaterialApp(

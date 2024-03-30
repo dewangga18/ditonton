@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie/domain/entities/movie.dart';
-import 'package:search/bloc/movie/movie_search_bloc.dart';
+import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
 import 'package:search/usecases/search_movies.dart';
 
 import 'movie_search_bloc_test.mocks.dart';

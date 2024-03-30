@@ -5,6 +5,8 @@ import 'package:tv/presentation/pages/tv_section.dart';
 import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
+import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -65,6 +67,8 @@ class _HomePageState extends State<HomePage> {
               title: const Text('Watchlist'),
               onTap: () {
                 Navigator.pushNamed(context, WATCHLIST_ROUTE);
+                context.read<WatchlistMovieBloc>().add(FetchWatchlistMovie());
+                context.read<WatchlistTvBloc>().add(FetchWatchlistTv());
               },
             ),
             ListTile(

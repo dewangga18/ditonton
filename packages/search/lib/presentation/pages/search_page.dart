@@ -2,8 +2,8 @@ import 'package:core/core.dart';
 import 'package:core/widgets/card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:search/bloc/movie/movie_search_bloc.dart';
-import 'package:search/bloc/tv/tv_search_bloc.dart';
+import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
+import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

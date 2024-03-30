@@ -8,8 +8,8 @@ import 'package:movie/domain/usecases/get_movie_recommendations.dart';
 import 'package:movie/domain/usecases/get_now_playing_movies.dart';
 import 'package:movie/domain/usecases/get_popular_movies.dart';
 import 'package:movie/domain/usecases/get_top_rated_movies.dart';
-import 'package:search/bloc/movie/movie_search_bloc.dart';
-import 'package:search/bloc/tv/tv_search_bloc.dart';
+import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
+import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 import 'package:search/usecases/search_movies.dart';
 import 'package:search/usecases/search_tv.dart';
 import 'package:tv/data/datasources/tv_local_data_source.dart';
@@ -19,12 +19,12 @@ import 'package:movie/presentation/providers/movie_detail_notifier.dart';
 import 'package:movie/presentation/providers/movie_list_notifier.dart';
 import 'package:movie/presentation/providers/popular_movies_notifier.dart';
 import 'package:movie/presentation/providers/top_rated_movies_notifier.dart';
-import 'package:watchlist/presentation/provider/movie/watchlist_movie_notifier.dart';
+import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
+import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 import 'package:tv/presentation/providers/popular_tv_notifier.dart';
 import 'package:tv/presentation/providers/top_rated_tv_notifier.dart';
 import 'package:tv/presentation/providers/tv_detail_notifier.dart';
 import 'package:tv/presentation/providers/tv_list_notifier.dart';
-import 'package:watchlist/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tv/domain/repository/tv_repository.dart';
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart';
@@ -79,11 +79,6 @@ void init(Client client) async {
     ),
   );
   locator.registerFactory(
-    () => WatchlistMovieNotifier(
-      getWatchlistMovies: locator(),
-    ),
-  );
-  locator.registerFactory(
     () => TvListNotifier(
       getNowPlayingTvs: locator(),
       getPopularTvs: locator(),
@@ -110,9 +105,10 @@ void init(Client client) async {
     ),
   );
   locator.registerFactory(
-    () => WatchlistTvNotifier(
-      getWatchlistTvs: locator(),
-    ),
+    () => WatchlistMovieBloc(locator()),
+  );
+  locator.registerFactory(
+    () => WatchlistTvBloc(locator()),
   );
 
   /// use case
