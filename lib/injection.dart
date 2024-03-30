@@ -6,30 +6,30 @@ import 'package:movie/domain/repository/movie_repository.dart';
 import 'package:movie/domain/usecases/get_movie_detail.dart';
 import 'package:movie/domain/usecases/get_movie_recommendations.dart';
 import 'package:movie/domain/usecases/get_now_playing_movies.dart';
-import 'package:movie/domain/usecases/get_popular_movies.dart';
-import 'package:movie/domain/usecases/get_top_rated_movies.dart';
+import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
+import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
+import 'package:popular/usecases/get_popular_movies.dart';
+import 'package:popular/usecases/get_popular_tvs.dart';
 import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 import 'package:search/usecases/search_movies.dart';
 import 'package:search/usecases/search_tv.dart';
+import 'package:top_rated/presentation/bloc/movie/top_rated_movie_bloc.dart';
+import 'package:top_rated/presentation/bloc/tv/top_rated_tv_bloc.dart';
+import 'package:top_rated/usecases/get_top_rated_movies.dart';
+import 'package:top_rated/usecases/get_top_rated_tvs.dart';
 import 'package:tv/data/datasources/tv_local_data_source.dart';
 import 'package:tv/data/datasources/tv_remote_data_source.dart';
 import 'package:tv/data/repository/tv_repository_impl.dart';
 import 'package:movie/presentation/providers/movie_detail_notifier.dart';
 import 'package:movie/presentation/providers/movie_list_notifier.dart';
-import 'package:movie/presentation/providers/popular_movies_notifier.dart';
-import 'package:movie/presentation/providers/top_rated_movies_notifier.dart';
 import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
 import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
-import 'package:tv/presentation/providers/popular_tv_notifier.dart';
-import 'package:tv/presentation/providers/top_rated_tv_notifier.dart';
 import 'package:tv/presentation/providers/tv_detail_notifier.dart';
 import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tv/domain/repository/tv_repository.dart';
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart';
-import 'package:tv/domain/usecases/get_popular_tvs.dart';
-import 'package:tv/domain/usecases/get_top_rated_tvs.dart';
 import 'package:tv/domain/usecases/get_tv_detail.dart';
 import 'package:tv/domain/usecases/get_tv_recommendations.dart';
 import 'package:watchlist/data/database_helper.dart';
@@ -69,14 +69,10 @@ void init(Client client) async {
     () => TvSearchBloc(locator()),
   );
   locator.registerFactory(
-    () => PopularMoviesNotifier(
-      locator(),
-    ),
+    () => PopularMoviesBloc(locator()),
   );
   locator.registerFactory(
-    () => TopRatedMoviesNotifier(
-      getTopRatedMovies: locator(),
-    ),
+    () => TopRatedMovieBloc(locator()),
   );
   locator.registerFactory(
     () => TvListNotifier(
@@ -95,14 +91,10 @@ void init(Client client) async {
     ),
   );
   locator.registerFactory(
-    () => PopularTvsNotifier(
-      locator(),
-    ),
+    () => PopularTvBloc(locator()),
   );
   locator.registerFactory(
-    () => TopRatedTvsNotifier(
-      getTopRatedTvs: locator(),
-    ),
+    () => TopRatedTvBloc(locator()),
   );
   locator.registerFactory(
     () => WatchlistMovieBloc(locator()),

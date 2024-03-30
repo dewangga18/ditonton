@@ -11,8 +11,8 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:tv/domain/entities/tv.dart' as _i7;
 import 'package:tv/domain/repository/tv_repository.dart' as _i2;
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart' as _i4;
-import 'package:tv/domain/usecases/get_popular_tvs.dart' as _i8;
-import 'package:tv/domain/usecases/get_top_rated_tvs.dart' as _i9;
+import 'package:popular/usecases/get_popular_tvs.dart' as _i8;
+import 'package:top_rated/usecases/get_top_rated_tvs.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

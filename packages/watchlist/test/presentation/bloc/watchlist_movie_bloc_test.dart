@@ -37,6 +37,7 @@ void main() {
       const WatchlistMovieHasData([testWatchlistMovie]),
     ],
   );
+  
   blocTest<WatchlistMovieBloc, WatchlistMovieState>(
     'should return error when data is unsuccessful',
     build: () {

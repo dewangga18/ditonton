@@ -6,6 +6,8 @@ import 'package:tv/presentation/providers/tv_list_notifier.dart';
 import 'package:core/widgets/space_x.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
+import 'package:top_rated/presentation/bloc/tv/top_rated_tv_bloc.dart';
 
 class TvSection extends StatelessWidget {
   const TvSection({super.key});
@@ -41,11 +43,14 @@ class TvSection extends StatelessWidget {
             }),
             _buildSubHeading(
               title: 'Popular',
-              onTap: () => Navigator.pushNamed(
-                context,
-                POPULAR_ROUTE,
-                arguments: 1,
-              ),
+               onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  POPULAR_ROUTE,
+                  arguments: 1,
+                );
+                context.read<PopularTvBloc>().add(FetchPopularTv());
+              },
             ),
             Consumer<TvListNotifier>(builder: (context, data, child) {
               final state = data.popularTvsState;
@@ -61,11 +66,14 @@ class TvSection extends StatelessWidget {
             }),
             _buildSubHeading(
               title: 'Top Rated',
-              onTap: () => Navigator.pushNamed(
-                context,
-                TOP_RATED_ROUTE,
-                arguments: 1,
-              ),
+             onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  TOP_RATED_ROUTE,
+                  arguments: 1,
+                );
+                context.read<TopRatedTvBloc>().add(FetchTopRatedTv());
+              },
             ),
             Consumer<TvListNotifier>(builder: (context, data, child) {
               final state = data.topRatedTvsState;

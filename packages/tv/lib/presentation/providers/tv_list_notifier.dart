@@ -2,8 +2,8 @@ import 'package:tv/domain/entities/tv.dart';
 import 'package:core/utils/state_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:tv/domain/usecases/get_now_playing_tvs.dart';
-import 'package:tv/domain/usecases/get_popular_tvs.dart';
-import 'package:tv/domain/usecases/get_top_rated_tvs.dart';
+import 'package:popular/usecases/get_popular_tvs.dart';
+import 'package:top_rated/usecases/get_top_rated_tvs.dart';
 
 class TvListNotifier extends ChangeNotifier {
   var _nowPlayingTvs = <Tv>[];

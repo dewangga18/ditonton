@@ -23,6 +23,10 @@ dependencies:
     path: ../watchlist
   core:
     path: ../core
+  popular:
+    path: ../popular
+  top_rated:
+    path: ../top_rated
   ditonton:
     path: ../../
 

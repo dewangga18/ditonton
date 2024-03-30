@@ -6,12 +6,16 @@ import 'package:core/utils/utils.dart';
 import 'package:ditonton/firebase_options.dart';
 import 'package:ditonton/presentation/pages/home_page.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
-import 'package:ditonton/presentation/pages/popular_page.dart';
-import 'package:ditonton/presentation/pages/top_rated_page.dart';
+import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
+import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
+import 'package:top_rated/presentation/bloc/movie/top_rated_movie_bloc.dart';
+import 'package:top_rated/presentation/bloc/tv/top_rated_tv_bloc.dart';
+import 'package:top_rated/presentation/pages/top_rated_page.dart';
 import 'package:tv/presentation/pages/tv_detail_page.dart';
 import 'package:ditonton/utils/ssl_pinning.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:popular/presentation/pages/popular_page.dart';
 import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
 import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
@@ -19,14 +23,8 @@ import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 import 'package:watchlist/presentation/page/watchlist_page.dart';
 import 'package:movie/presentation/providers/movie_detail_notifier.dart';
 import 'package:movie/presentation/providers/movie_list_notifier.dart';
-import 'package:movie/presentation/providers/popular_movies_notifier.dart';
-import 'package:movie/presentation/providers/top_rated_movies_notifier.dart';
-import 'package:watchlist/presentation/provider/movie/watchlist_movie_notifier.dart';
-import 'package:tv/presentation/providers/popular_tv_notifier.dart';
-import 'package:tv/presentation/providers/top_rated_tv_notifier.dart';
 import 'package:tv/presentation/providers/tv_detail_notifier.dart';
 import 'package:tv/presentation/providers/tv_list_notifier.dart';
-import 'package:watchlist/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,28 +58,22 @@ class MyApp extends StatelessWidget {
           create: (_) => di.locator<MovieDetailNotifier>(),
         ),
         ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedMoviesNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularMoviesNotifier>(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistMovieNotifier>(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => di.locator<TvListNotifier>(),
         ),
         ChangeNotifierProvider(
           create: (_) => di.locator<TvDetailNotifier>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<TopRatedTvsNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularMoviesBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<PopularTvsNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedMovieBloc>(),
         ),
-        ChangeNotifierProvider(
-          create: (_) => di.locator<WatchlistTvNotifier>(),
+        BlocProvider(
+          create: (_) => di.locator<PopularTvBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TopRatedTvBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<MovieSearchBloc>(),

@@ -53,6 +53,10 @@ dependencies:
     path: packages/movie
   tv:
     path: packages/tv
+  popular:
+    path: packages/popular
+  top_rated:
+    path: packages/top_rated
   watchlist:
     path: packages/watchlist
 

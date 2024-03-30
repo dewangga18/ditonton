@@ -7,8 +7,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:movie/domain/usecases/get_now_playing_movies.dart';
-import 'package:movie/domain/usecases/get_popular_movies.dart';
-import 'package:movie/domain/usecases/get_top_rated_movies.dart';
+import 'package:popular/usecases/get_popular_movies.dart';
+import 'package:top_rated/usecases/get_top_rated_movies.dart';
 
 import 'movie_list_notifier_test.mocks.dart';
 

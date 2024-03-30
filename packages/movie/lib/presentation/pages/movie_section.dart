@@ -6,6 +6,8 @@ import 'package:core/widgets/space_x.dart';
 import 'package:flutter/material.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:provider/provider.dart';
+import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
+import 'package:top_rated/presentation/bloc/movie/top_rated_movie_bloc.dart';
 
 class MovieSection extends StatelessWidget {
   const MovieSection({super.key});
@@ -41,11 +43,14 @@ class MovieSection extends StatelessWidget {
             }),
             _buildSubHeading(
               title: 'Popular',
-              onTap: () => Navigator.pushNamed(
-                context,
-                POPULAR_ROUTE,
-                arguments: 0,
-              ),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  POPULAR_ROUTE,
+                  arguments: 0,
+                );
+                context.read<PopularMoviesBloc>().add(FetchPopularMovie());
+              },
             ),
             Consumer<MovieListNotifier>(builder: (context, data, child) {
               final state = data.popularMoviesState;
@@ -61,11 +66,14 @@ class MovieSection extends StatelessWidget {
             }),
             _buildSubHeading(
               title: 'Top Rated',
-              onTap: () => Navigator.pushNamed(
-                context,
-                TOP_RATED_ROUTE,
-                arguments: 0,
-              ),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  TOP_RATED_ROUTE,
+                  arguments: 0,
+                );
+                context.read<TopRatedMovieBloc>().add(FetchTopRatedMovie());
+              },
             ),
             Consumer<MovieListNotifier>(builder: (context, data, child) {
               final state = data.topRatedMoviesState;
