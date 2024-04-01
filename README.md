@@ -6,4 +6,5 @@
 
 ### Bukti CI/CD menggunakan codemagic
 <img width="1440" alt="Screenshot 2024-03-31 at 02 37 57" src="https://github.com/dewangga18/ditonton/assets/60208227/81ab6b3e-d32b-4855-99bc-9a6b867d3807">
+<img width="1440" alt="image" src="https://github.com/dewangga18/ditonton/assets/60208227/e66280f3-fcff-46ec-91c5-22c1ce86cdc9">
 
