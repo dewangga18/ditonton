@@ -1,4 +1,5 @@
 import 'package:core/utils/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/list/movie_list_bloc.dart';
 import 'package:movie/presentation/pages/movie_section.dart';
 import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
@@ -8,7 +9,6 @@ import 'package:top_rated/presentation/bloc/tv/top_rated_tv_bloc.dart';
 import 'package:tv/presentation/bloc/list/tv_list_bloc.dart';
 import 'package:tv/presentation/pages/tv_section.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
 import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 

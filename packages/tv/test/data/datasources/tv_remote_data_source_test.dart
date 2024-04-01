@@ -113,7 +113,7 @@ void main() {
 
   group('get Top Rated Tvs', () {
     final tTvList = TvResponse.fromJson(
-      json.decode(readJson('dummy_data/top_rated.json')),
+      json.decode(readJson('dummy_data/tv_top_rated.json')),
     ).tvList;
 
     test(
@@ -124,7 +124,7 @@ void main() {
           mockHttpClient.get(Uri.parse('$baseUrl/tv/top_rated?$apiKey')),
         ).thenAnswer(
           (_) async => http.Response(
-            readJson('dummy_data/top_rated.json'),
+            readJson('dummy_data/tv_top_rated.json'),
             200,
           ),
         );
