@@ -25,9 +25,12 @@ class MovieSection extends StatelessWidget {
               style: kHeading5,
             ),
             15.verticalSpace,
-            Text(
-              'Now Playing',
-              style: kHeading6,
+            _buildSubHeading(
+              title: 'Now PLaying',
+              onTap: () => Navigator.pushNamed(
+                context,
+                MOVIE_NOW_PLAYING_ROUTE,
+              ),
             ),
             BlocBuilder<MovieListBloc, MovieListState>(
               builder: (context, state) {
@@ -143,6 +146,7 @@ class MovieList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           final movie = movies[index];
+
           return Container(
             padding: const EdgeInsets.all(8),
             child: InkWell(
@@ -156,7 +160,7 @@ class MovieList extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$baseImageUrl${movie.posterPath}',
+                  imageUrl: '$baseImageUrl${movie.posterPath ?? ''}',
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),

@@ -25,9 +25,12 @@ class TvSection extends StatelessWidget {
               style: kHeading5,
             ),
             15.verticalSpace,
-            Text(
-              'Now Playing',
-              style: kHeading6,
+            _buildSubHeading(
+              title: 'Now PLaying',
+              onTap: () => Navigator.pushNamed(
+                context,
+                TV_NOW_PLAYING_ROUTE,
+              ),
             ),
             BlocBuilder<TvListBloc, TvListState>(
               builder: (context, state) {
@@ -157,7 +160,7 @@ class TvList extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(16)),
                 child: CachedNetworkImage(
-                  imageUrl: '$baseImageUrl${tv.posterPath}',
+                  imageUrl: '$baseImageUrl${tv.posterPath ?? ''}',
                   placeholder: (context, url) => const Center(
                     child: CircularProgressIndicator(),
                   ),

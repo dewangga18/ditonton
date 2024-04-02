@@ -8,3 +8,5 @@ const SEARCH_ROUTE = '/search';
 const ABOUT_ROUTE = '/about';
 const HOME_ROUTE = '/home';
 const WATCHLIST_ROUTE = '/watchlist';
+const TV_NOW_PLAYING_ROUTE = '/tv-playing';
+const MOVIE_NOW_PLAYING_ROUTE = '/movie-playing';

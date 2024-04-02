@@ -15,3 +15,5 @@ class MovieOnQueryChanged extends MovieSearchEvent {
   @override
   List<Object> get props => [query];
 }
+
+class ClearMovieList extends MovieSearchEvent {}

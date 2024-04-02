@@ -10,6 +10,9 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<MovieSearchBloc>().add(ClearMovieList());
+    context.read<TvSearchBloc>().add(ClearTvList());
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
@@ -23,7 +26,9 @@ class SearchPage extends StatelessWidget {
             children: [
               TextField(
                 onChanged: (query) {
-                  context.read<MovieSearchBloc>().add(MovieOnQueryChanged(query));
+                  context
+                      .read<MovieSearchBloc>()
+                      .add(MovieOnQueryChanged(query));
                   context.read<TvSearchBloc>().add(TvOnQueryChanged(query));
                 },
                 decoration: const InputDecoration(
@@ -64,7 +69,7 @@ class SearchPage extends StatelessWidget {
                             padding: const EdgeInsets.all(8),
                             itemBuilder: (context, index) {
                               final movie = result[index];
-                          
+
                               return CardList(movie: movie);
                             },
                             itemCount: result.length,
@@ -92,7 +97,7 @@ class SearchPage extends StatelessWidget {
                             padding: const EdgeInsets.all(8),
                             itemBuilder: (context, index) {
                               final tv = result[index];
-                          
+
                               return CardList(tv: tv);
                             },
                             itemCount: result.length,

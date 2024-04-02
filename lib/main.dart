@@ -8,6 +8,7 @@ import 'package:ditonton/presentation/pages/home_page.dart';
 import 'package:movie/presentation/bloc/detail/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/list/movie_list_bloc.dart';
 import 'package:movie/presentation/pages/movie_detail_page.dart';
+import 'package:movie/presentation/pages/movie_now_playing_page.dart';
 import 'package:popular/presentation/bloc/movie/popular_movies_bloc.dart';
 import 'package:popular/presentation/bloc/tv/popular_tv_bloc.dart';
 import 'package:top_rated/presentation/bloc/movie/top_rated_movie_bloc.dart';
@@ -22,6 +23,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:popular/presentation/pages/popular_page.dart';
 import 'package:search/presentation/bloc/movie/movie_search_bloc.dart';
 import 'package:search/presentation/bloc/tv/tv_search_bloc.dart';
+import 'package:tv/presentation/pages/tv_now_playing_page.dart';
 import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
 import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
 import 'package:watchlist/presentation/page/watchlist_page.dart';
@@ -131,6 +133,10 @@ class MyApp extends StatelessWidget {
               );
             case ABOUT_ROUTE:
               return MaterialPageRoute(builder: (_) => const AboutPage());
+            case TV_NOW_PLAYING_ROUTE:
+              return MaterialPageRoute(builder: (_) => const TvNowPlayingPage());
+            case MOVIE_NOW_PLAYING_ROUTE:
+              return MaterialPageRoute(builder: (_) => const MovieNowPlayingPage());
             default:
               return MaterialPageRoute(
                 builder: (_) {

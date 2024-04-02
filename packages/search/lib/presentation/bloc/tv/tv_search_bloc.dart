@@ -13,6 +13,10 @@ class TvSearchBloc extends Bloc<TvSearchEvent, TvSearchState> {
     on<TvOnQueryChanged>(
       (event, emit) async {
         final query = event.query;
+        if (query.isEmpty) {
+          emit(TvSearchEmpty());
+          return;
+        }
 
         emit(TvSearchLoading());
         final result = await _searchTvs.execute(query);
@@ -24,6 +28,9 @@ class TvSearchBloc extends Bloc<TvSearchEvent, TvSearchState> {
       },
       transformer: debounce(const Duration(milliseconds: 500)),
     );
+    on<ClearTvList>((event, emit) {
+      emit(TvSearchEmpty());
+    });
   }
 
   EventTransformer<T> debounce<T>(Duration duration) {

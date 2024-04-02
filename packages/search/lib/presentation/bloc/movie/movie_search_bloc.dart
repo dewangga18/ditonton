@@ -14,6 +14,10 @@ class MovieSearchBloc extends Bloc<MovieSearchEvent, MovieSearchState> {
     on<MovieOnQueryChanged>(
       (event, emit) async {
         final query = event.query;
+        if (query.isEmpty) {
+          emit(MovieSearchEmpty());
+          return;
+        }
 
         emit(MovieSearchLoading());
         final result = await _searchMovies.execute(query);
@@ -25,6 +29,9 @@ class MovieSearchBloc extends Bloc<MovieSearchEvent, MovieSearchState> {
       },
       transformer: debounce(const Duration(milliseconds: 500)),
     );
+    on<ClearMovieList>((event, emit) {
+      emit(MovieSearchEmpty());
+    });
   }
 
   EventTransformer<T> debounce<T>(Duration duration) {

@@ -57,23 +57,39 @@ class CardList extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 16,
-                  bottom: 16,
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  child: CachedNetworkImage(
-                    imageUrl: '$baseImageUrl${movie?.posterPath}',
-                    width: 80,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(),
+              if (movie?.posterPath == null) ...[
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    bottom: 16,
+                  ),
+                  child: const ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    child: SizedBox(
+                      width: 80,
+                      child: Icon(Icons.error),
                     ),
-                    errorWidget: (_, url, e) => const Icon(Icons.error),
                   ),
                 ),
-              ),
+              ] else ...[
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    bottom: 16,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    child: CachedNetworkImage(
+                      imageUrl: '$baseImageUrl${movie?.posterPath ?? ''}',
+                      width: 80,
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (_, url, e) => const Icon(Icons.error),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),
@@ -118,23 +134,39 @@ class CardList extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 16,
-                  bottom: 16,
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(8)),
-                  child: CachedNetworkImage(
-                    imageUrl: '$baseImageUrl${tv?.posterPath}',
-                    width: 80,
-                    placeholder: (context, url) => const Center(
-                      child: CircularProgressIndicator(),
+              if (tv?.posterPath == null) ...[
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    bottom: 16,
+                  ),
+                  child: const ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                    child: SizedBox(
+                      width: 80,
+                      child: Icon(Icons.error),
                     ),
-                    errorWidget: (_, url, e) => const Icon(Icons.error),
                   ),
                 ),
-              ),
+              ] else ...[
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 16,
+                    bottom: 16,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    child: CachedNetworkImage(
+                      imageUrl: '$baseImageUrl${tv?.posterPath ?? ''}',
+                      width: 80,
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (_, url, e) => const Icon(Icons.error),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         ),

@@ -15,3 +15,5 @@ class TvOnQueryChanged extends TvSearchEvent {
   @override
   List<Object> get props => [query];
 }
+
+class ClearTvList extends TvSearchEvent {}
