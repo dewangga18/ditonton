@@ -5,6 +5,27 @@ workflows:
     instance_type: mac_mini_m1
     environment:
       flutter: 3.19.5
+    scripts:
+      name: Testing Modularization Movie
+      working_directory: packages/movie
+      script: flutter test --machine
+      name: Testing Modularization Top Rated
+      working_directory: packages/top_rated
+      script: flutter test --machine
+      name: Testing Modularization Search
+      working_directory: packages/search
+      script: flutter test --machine
+      name: Testing Modularization Popular
+      working_directory: packages/popular
+      script: flutter test --machine
+      name: Testing Modularization Tv
+      working_directory: packages/tv
+      script: flutter test --machine
+      name: Testing Modularization Watchlist
+      working_directory: packages/watchlist
+      script: flutter test --machine
+      name: Build Apk Release
+      script: flutter build apk --release
     publishing:
       email:
         recipients:

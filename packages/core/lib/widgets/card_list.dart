@@ -4,6 +4,9 @@ import 'package:core/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:tv/domain/entities/tv.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:watchlist/presentation/bloc/tv/watchlist_tv_bloc.dart';
+import 'package:watchlist/presentation/bloc/movie/watchlist_movie_bloc.dart';
 
 class CardList extends StatelessWidget {
   final Movie? movie;
@@ -26,7 +29,9 @@ class CardList extends StatelessWidget {
               context,
               MOVIE_DETAIL_ROUTE,
               arguments: movie?.id,
-            );
+            ).then((_) {
+              context.read<WatchlistMovieBloc>().add(FetchWatchlistMovie());
+            });
           },
           child: Stack(
             alignment: Alignment.bottomLeft,
@@ -103,7 +108,9 @@ class CardList extends StatelessWidget {
               context,
               TV_DETAIL_ROUTE,
               arguments: tv?.id,
-            );
+            ).then((_) {
+              context.read<WatchlistTvBloc>().add(FetchWatchlistTv());
+            });
           },
           child: Stack(
             alignment: Alignment.bottomLeft,
