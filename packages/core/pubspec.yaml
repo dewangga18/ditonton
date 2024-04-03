@@ -23,6 +23,7 @@ dependencies:
     path: ../tv
   watchlist:
     path: ../watchlist
+  flutter_bloc: ^8.1.5
 
 dev_dependencies:
   flutter_test:
