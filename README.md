@@ -1,10 +1,6 @@
 # Submission project akhir flutter expert
+[![Codemagic build status](https://api.codemagic.io/apps/6607c31dd6d004e3bb336302/ditonton/status_badge.svg)](https://codemagic.io/apps/6607c31dd6d004e3bb336302/ditonton/latest_build)
 
-### Bukti Crashlythic 
+### Dashboard Analythic & Crashlythic 
 <img width="1440" alt="Screenshot 2024-03-30 at 09 19 14" src="https://github.com/dewangga18/ditonton/assets/60208227/e9e10719-0526-4b5f-a094-450b364fe6f2">
 <img width="1440" alt="Screenshot 2024-03-30 at 09 19 35" src="https://github.com/dewangga18/ditonton/assets/60208227/823004f8-40b8-4f69-8f09-904578640dee">
-
-### Bukti CI/CD menggunakan codemagic
-<img width="1440" alt="image" src="https://github.com/dewangga18/ditonton/assets/60208227/e66280f3-fcff-46ec-91c5-22c1ce86cdc9">
-<img width="1440" alt="image" src="https://github.com/dewangga18/ditonton/assets/60208227/70ff18d3-f4a7-4e06-98d8-76b3ee62b288">
-<img width="1440" alt="image" src="https://github.com/dewangga18/ditonton/assets/60208227/28f77ec1-5b8b-49c7-96f0-19622990e1ae">
