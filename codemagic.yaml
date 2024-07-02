@@ -24,8 +24,8 @@ workflows:
       - name: Testing Modularization Watchlist
         working_directory: packages/watchlist
         script: flutter test --machine
-      - name: Build Apk Release
-        script: flutter build apk --release
+      # - name: Build Apk Release
+      #   script: flutter build apk --release
     publishing:
       email:
         recipients:
