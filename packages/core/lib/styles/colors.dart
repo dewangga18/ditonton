@@ -11,12 +11,10 @@ const kColorScheme = ColorScheme(
   primary: kMikadoYellow,
   secondary: kPrussianBlue,
   surface: kRichBlack,
-  background: kRichBlack,
   error: Colors.red,
   onPrimary: kRichBlack,
   onSecondary: Colors.white,
   onSurface: Colors.white,
-  onBackground: Colors.white,
   onError: Colors.white,
   brightness: Brightness.dark,
 );
